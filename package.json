@@ -10,10 +10,16 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
+    "@fortawesome/react-native-fontawesome": "^0.1.0",
+    "font-awesome": "^4.7.0",
     "git": "^0.1.5",
     "moment": "^2.24.0",
     "react": "16.9.0",
-    "react-native": "0.61.4"
+    "react-native": "0.61.4",
+    "react-native-svg": "^9.13.3"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",

@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
+import Today from '../Today';
 
 class Weather extends React.Component {
   constructor(props) {
@@ -27,14 +28,15 @@ class Weather extends React.Component {
   //   console.log('currentInput', this.state.currentInput);
   // };
 
-  getWeather = () => {
-    const apikey = process.env.REACT_APP_ID;
-    let zip = this.state.currentInput;
+  getWeather = async () => {
+    const apikey = '1d80f33d31919cc397f2bf782026d6c3';
+    let zip = this.state.setUserInput;
     const url =
       'https://api.openweathermap.org/data/2.5/weather?zip=' +
       zip +
       '&APPID=' +
       apikey;
+    console.log(url);
     fetch(url)
       .then(response => response.json())
       .then(responseData => {
@@ -57,6 +59,20 @@ class Weather extends React.Component {
       });
   };
 
+  // getData() {
+  //   const {humidity, country, city} = this.state;
+  //   return (
+  //     <View>
+  //       <Text h3>City</Text>
+  //       <Text>{city}</Text>
+  //       <Text h3>Humidity</Text>
+  //       <Text>{humidity}</Text>
+  //       <Text h3>Country</Text>
+  //       <Text>{country}</Text>
+  //     </View>
+  //   );
+  // }
+
   render() {
     return (
       <View>
@@ -67,7 +83,19 @@ class Weather extends React.Component {
           onChangeText={text => this.setState({setUserInput: text})}
           value={this.state.setUserInput}
         />
-        <Button title="Submit" />
+        <Button
+          title="Submit"
+          onPress={() => {
+            this.getWeather();
+          }}
+        />
+
+        {this.state.temperature.length > 0 && (
+          <Today
+            temperature={this.state.temperature}
+            dayInfo={this.state.dayInfo}
+          />
+        )}
       </View>
     );
   }
