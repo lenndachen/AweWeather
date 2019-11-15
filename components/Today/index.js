@@ -1,5 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {
   faCloud,
@@ -16,38 +17,39 @@ class Today extends React.Component {
     console.log('newArray1', this.props.dayInfo);
     if (newArray1 === 'Rain') {
       return (
-        <View>
-          <FontAwesomeIcon icon={faCloud} size={10} />
-        </View>
+        <Text>
+          <FontAwesomeIcon icon={faCloudRain} size={35} />
+        </Text>
       );
     }
-    // if (newArray1 === 'Clouds') {
-    //   return (
-    //     <div>
-    //       <FontAwesomeIcon icon={faCloud} size="xs" />
-    //     </div>
-    //   );
-    // }
-    // if (newArray1 === 'Sunny') {
-    //   return (
-    //     <div>
-    //       <FontAwesomeIcon icon={faSun} size="xs" />
-    //     </div>
-    //   );
-    // }
-    // if (newArray1 === 'Clear') {
-    //   return (
-    //     <div>
-    //       <FontAwesomeIcon icon={faSun} size="xs" />
-    //     </div>
-    //   );
-    // }
-    // if (newArray1 === 'Snow') {
-    //   return (
-    //     <div>
-    //       <FontAwesomeIcon icon={faSnowflake} size="xs" />
-    //     </div>
-    // );
+    if (newArray1 === 'Clouds') {
+      return (
+        <Text>
+          <FontAwesomeIcon icon={faCloud} size={35} />
+        </Text>
+      );
+    }
+    if (newArray1 === 'Sunny') {
+      return (
+        <Text>
+          <FontAwesomeIcon icon={faSun} size={35} />
+        </Text>
+      );
+    }
+    if (newArray1 === 'Clear') {
+      return (
+        <Text>
+          <FontAwesomeIcon icon={faSun} size={35} />
+        </Text>
+      );
+    }
+    if (newArray1 === 'Snow') {
+      return (
+        <Text>
+          <FontAwesomeIcon icon={faSnowflake} size={35} />
+        </Text>
+      );
+    }
   }
 
   getTemp(k) {
@@ -60,11 +62,11 @@ class Today extends React.Component {
   render() {
     return (
       <View>
-        {/* {this.props.temperature && <View><Text>Hello ℉</Text></View>} */}
-        {/* <View>{this.getBigIcon()}</View> */}
+        <View style={{width: 30, height: 20}}>{this.getBigIcon()}</View>
       </View>
     );
   }
 }
+
 
 export default Today;

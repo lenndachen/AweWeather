@@ -2,7 +2,6 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Day from "../Day";
 import moment from "moment";
-import '../../assets/styles/_Week.scss'
 import {View} from 'react-native';
 
 class Week extends React.Component {
@@ -81,8 +80,7 @@ class Week extends React.Component {
     return (
       <View>
         {this.state.day1info && (
-          <View className="rendered-five-times">
-  
+          <View>
             <Day
               day={this.state.day2}
               todayHigh={this.state.day2High}
