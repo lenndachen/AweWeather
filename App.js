@@ -1,9 +1,19 @@
-import React from "react";
+import React, {Component} from 'react';
 import Weather from './components/Weather';
-
-class App extends React.Component {
+import AppContainer from './components/AppContainer';
+import {View} from 'react-native';
+class App extends Component {
   render() {
-    return <Weather />;
+    return (
+      <View>
+        <View>
+          <AppContainer />
+        </View>
+        <View>
+          <Weather />
+        </View>
+      </View>
+    );
   }
 }
 

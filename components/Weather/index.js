@@ -1,6 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Button,
+  ScrollView,
+} from 'react-native';
 import Today from '../Today';
 import Week from '../Week';
 import moment from 'moment';
@@ -170,53 +177,54 @@ class Weather extends React.Component {
   render() {
     const {temperature, dayInfo, city, country} = this.state;
     return (
-      <View>
-        <Text>Hello</Text>
-        <Text>ZipCode</Text>
-        <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={text => this.setState({setUserInput: text})}
-          value={this.state.setUserInput}
-        />
-        <Button
-          title="Submit"
-          onPress={() => {
-            this.getWeather();
-            this.get5day();
-          }}
-        />
-
+      <ScrollView>
         <View>
-          <View style={styles.section1}>
-            <View style={styles.flexyglass}>
-              <Text>
-                Temperature:
-                {this.state.temperature && (
-                  <Text>{this.getTemp(temperature)}</Text>
-                )}{' '}
-                {''} {''}
-              </Text>
-              <Today dayInfo={dayInfo} />
+          <Text>Hello</Text>
+          <Text>ZipCode</Text>
+          <TextInput
+            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+            onChangeText={text => this.setState({setUserInput: text})}
+            value={this.state.setUserInput}
+          />
+          <Button
+            title="Submit"
+            onPress={() => {
+              this.getWeather();
+              this.get5day();
+            }}
+          />
+
+          <View>
+            <View style={styles.section1}>
+              <View style={styles.flexyglass}>
+                <Text style={styles.big}>
+                  Temperature:
+                  {this.state.temperature && (
+                    <Text>{this.getTemp(temperature)} ℉</Text>
+                  )}
+                </Text>
+                <Today dayInfo={dayInfo} />
+              </View>
+              <View>
+                <Text style={styles.big}>Description: {dayInfo}</Text>
+                <Text style={styles.big}>City: {city}</Text>
+                <Text style={styles.big}>Country: {country}</Text>
+              </View>
             </View>
             <View>
-              <Text>Description: {dayInfo}</Text>
-              <Text>City: {city}</Text>
-              <Text>Country: {country}</Text>
+              {this.state.isForecast && (
+                <Week
+                  today={this.state.today}
+                  day2={this.state.day2}
+                  day3={this.state.day3}
+                  day4={this.state.day4}
+                  day5={this.state.day5}
+                />
+              )}
             </View>
           </View>
-          <View>
-            {this.state.isForecast && (
-              <Week
-                today={this.state.today}
-                day2={this.state.day2}
-                day3={this.state.day3}
-                day4={this.state.day4}
-                day5={this.state.day5}
-              />
-            )}
-          </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -228,12 +236,19 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   section1: {
+    color: 'blue',
     borderStyle: 'solid',
     borderColor: 'black',
     borderWidth: 1,
-
   },
   flexyglass: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    textAlign: 'center',
+  },
+  big: {
+    fontSize: 25,
+    justifyContent: 'center',
+    textAlign: 'center',
   },
 });
