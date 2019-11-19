@@ -68,5 +68,4 @@ class Today extends React.Component {
   }
 }
 
-
 export default Today;

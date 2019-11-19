@@ -2,18 +2,18 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';
-import Setting from './components/screens/Setting';
-import Home from './components/screens/Home';
+import Setting from '../screens/Setting';
+import Home from '../screens/Home';
 
 const AppNavigator = createStackNavigator({
   SettingScreen: {screen: Setting},
-  HomeScreen: {screen: Home},
+  HomeScreen: { screen: Home },
 });
 
-const AppContainer = createAppContainer(AppNavigator);
+const AppCo = createAppContainer(AppNavigator);
 
 export default class AppContainer extends Component {
-    render() {
-      return <AppContainer />;
-    }
+  render() {
+    return <AppCo />;
   }
+}
