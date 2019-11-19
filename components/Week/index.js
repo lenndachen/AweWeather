@@ -1,6 +1,6 @@
 import React from 'react';
 import Day from '../Day';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 class Week extends React.Component {
   constructor(props) {
@@ -79,7 +79,7 @@ class Week extends React.Component {
     return (
       <View>
         {this.state.day1info && (
-          <View>
+          <View style={styles.renders}>
             <Day
               day={this.state.day2}
               todayHigh={this.state.day2High}
@@ -112,3 +112,11 @@ class Week extends React.Component {
 }
 
 export default Week;
+
+const styles = StyleSheet.create({
+  renders: {
+    flex: 1,
+    flexDirection: 'row',
+    width: '30%',
+  },
+});

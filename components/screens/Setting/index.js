@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Button, TextInput, StyleSheet, Text} from 'react-native';
 import moment from 'moment';
-import {navigation} from 'react-navigation';
+
 export class Setting extends Component {
   constructor(props) {
     super(props);
@@ -139,10 +139,9 @@ export class Setting extends Component {
     });
   }
 
-
   render() {
     return (
-      <View>
+      <View style={styles.home}>
         <TextInput
           style={styles.input}
           onChangeText={text => this.setState({setUserInput: text})}
@@ -164,5 +163,11 @@ export class Setting extends Component {
 export default Setting;
 
 const styles = StyleSheet.create({
-  input: {height: 40, borderColor: 'gray', borderWidth: 1},
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    position: 'relative',
+  },
+  home: {},
 });
