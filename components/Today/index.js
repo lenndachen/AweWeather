@@ -1,5 +1,6 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {
   faCloud,
@@ -8,7 +9,7 @@ import {
   faSnowflake,
 } from '@fortawesome/free-solid-svg-icons';
 library.add(faSun, faCloud, faCloudRain, faSnowflake);
-import { View, Text } from 'react-native';
+import {View, Text} from 'react-native';
 
 class Today extends React.Component {
   getBigIcon() {
@@ -16,37 +17,37 @@ class Today extends React.Component {
     console.log('newArray1', this.props.dayInfo);
     if (newArray1 === 'Rain') {
       return (
-        <div>
-          <FontAwesomeIcon icon={faCloudRain} size="xs" />
-        </div>
+        <Text>
+          <FontAwesomeIcon icon={faCloudRain} size={35} />
+        </Text>
       );
     }
     if (newArray1 === 'Clouds') {
       return (
-        <div>
-          <FontAwesomeIcon icon={faCloud} size="xs" />
-        </div>
+        <Text>
+          <FontAwesomeIcon icon={faCloud} size={35} />
+        </Text>
       );
     }
     if (newArray1 === 'Sunny') {
       return (
-        <div>
-          <FontAwesomeIcon icon={faSun} size="xs" />
-        </div>
+        <Text>
+          <FontAwesomeIcon icon={faSun} size={35} />
+        </Text>
       );
     }
     if (newArray1 === 'Clear') {
       return (
-        <div>
-          <FontAwesomeIcon icon={faSun} size="xs" />
-        </div>
+        <Text>
+          <FontAwesomeIcon icon={faSun} size={35} />
+        </Text>
       );
     }
     if (newArray1 === 'Snow') {
       return (
-        <div>
-          <FontAwesomeIcon icon={faSnowflake} size="xs" />
-        </div>
+        <Text>
+          <FontAwesomeIcon icon={faSnowflake} size={35} />
+        </Text>
       );
     }
   }
@@ -61,11 +62,7 @@ class Today extends React.Component {
   render() {
     return (
       <View>
-        <Text>
-        {this.props.temperature && (
-              {this.getTemp(this.props.temperature)}℉)}
-        </Text>
-            <Text>{this.getBigIcon()}</Text>
+        <View style={{width: 30, height: 20}}>{this.getBigIcon()}</View>
       </View>
     );
   }

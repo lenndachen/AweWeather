@@ -1,29 +1,27 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Day from "../Day";
-import moment from "moment";
-import '../../assets/styles/_Week.scss'
+import React from 'react';
+import Day from '../Day';
 import {View} from 'react-native';
 
 class Week extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todayHigh: "",
-      todayLow: "",
-      day2High: "",
-      day2Low: "",
-      day3High: "",
-      day3Low: "",
-      day4High: "",
-      day4Low: "",
-      day5High: "",
-      day5Low: ""
+      todayHigh: '',
+      todayLow: '',
+      day2High: '',
+      day2Low: '',
+      day3High: '',
+      day3Low: '',
+      day4High: '',
+      day4Low: '',
+      day5High: '',
+      day5Low: '',
     };
   }
   componentDidMount() {
     // this.getMaxTemp(this.);
     console.log(this.props.today);
+    // eslint-disable-next-line react/no-did-mount-set-state
     this.setState({
       todayHigh: this.getTemp(this.getMaxTemp(this.props.today)),
       day2High: this.getTemp(this.getMaxTemp(this.props.day2)),
@@ -44,7 +42,7 @@ class Week extends React.Component {
       day2info: this.props.day2,
       day3info: this.props.day3,
       day4info: this.props.day4,
-      day5info: this.props.day5
+      day5info: this.props.day5,
     });
     // this.props.today.map(item => {
     // })
@@ -81,8 +79,7 @@ class Week extends React.Component {
     return (
       <View>
         {this.state.day1info && (
-          <View className="rendered-five-times">
-  
+          <View>
             <Day
               day={this.state.day2}
               todayHigh={this.state.day2High}
