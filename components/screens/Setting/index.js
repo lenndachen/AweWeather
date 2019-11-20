@@ -148,7 +148,7 @@ export class Setting extends Component {
           value={this.state.setUserInput}
         />
         <Button
-          title="Home"
+          title="Submit"
           onPress={() => {
             this.props.navigation.navigate('HomeScreen', {
               user: this.state.setUserInput,
@@ -165,9 +165,9 @@ export default Setting;
 const styles = StyleSheet.create({
   input: {
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
     position: 'relative',
   },
-  home: {},
+  home: {
+
+  },
 });

@@ -9,7 +9,7 @@ import {
   faSnowflake,
 } from '@fortawesome/free-solid-svg-icons';
 library.add(faSun, faCloud, faCloudRain, faSnowflake);
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 class Today extends React.Component {
   getBigIcon() {
@@ -18,35 +18,35 @@ class Today extends React.Component {
     if (newArray1 === 'Rain') {
       return (
         <Text>
-          <FontAwesomeIcon icon={faCloudRain} size={35} />
+          <FontAwesomeIcon icon={faCloudRain} size={170} />
         </Text>
       );
     }
     if (newArray1 === 'Clouds') {
       return (
         <Text>
-          <FontAwesomeIcon icon={faCloud} size={35} />
+          <FontAwesomeIcon icon={faCloud} size={170} />
         </Text>
       );
     }
     if (newArray1 === 'Sunny') {
       return (
         <Text>
-          <FontAwesomeIcon icon={faSun} size={35} />
+          <FontAwesomeIcon icon={faSun} size={170} />
         </Text>
       );
     }
     if (newArray1 === 'Clear') {
       return (
         <Text>
-          <FontAwesomeIcon icon={faSun} size={35} />
+          <FontAwesomeIcon icon={faSun} size={170} />
         </Text>
       );
     }
     if (newArray1 === 'Snow') {
       return (
         <Text>
-          <FontAwesomeIcon icon={faSnowflake} size={35} />
+          <FontAwesomeIcon icon={faSnowflake} size={170} />
         </Text>
       );
     }
@@ -62,10 +62,17 @@ class Today extends React.Component {
   render() {
     return (
       <View>
-        <View style={{width: 30, height: 20}}>{this.getBigIcon()}</View>
+        <View style={styles.bigIcon}>{this.getBigIcon()}</View>
       </View>
     );
   }
 }
 
 export default Today;
+
+const styles = StyleSheet.create({
+  bigIcon: {
+    position: 'absolute',
+    left: 120,
+  },
+});

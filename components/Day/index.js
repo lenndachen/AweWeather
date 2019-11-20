@@ -21,22 +21,22 @@ class Day extends React.Component {
 
     if (forecast === 'Rain') {
       return (
-        <View>
-          <FontAwesomeIcon icon={faCloudRain} size={20}/> Rain
-        </View>
+        <Text>
+          <FontAwesomeIcon icon={faCloudRain} size={20} /> Rain
+        </Text>
       );
     }
     if (forecast === 'Clouds') {
       return (
         <Text>
-          <FontAwesomeIcon icon={faCloud} size={20}/> Cloudy
+          <FontAwesomeIcon icon={faCloud} size={20} /> Cloudy
         </Text>
       );
     }
     if (forecast === 'sunny') {
       return (
         <Text>
-          <FontAwesomeIcon icon={faSun} size={20}/> Sunny
+          <FontAwesomeIcon icon={faSun} size={20} /> Sunny
         </Text>
       );
     }
@@ -58,12 +58,14 @@ class Day extends React.Component {
 
   render() {
     return (
-      <View style={styles.level}>
+      <View>
         <View style={styles.icons}>
-          <Text>{moment(this.props.day).format('MMMM Do YYYY')}</Text>
-          <Text>{this.getIcon()}</Text>
-          <Text>High:{this.props.todayHigh} ℉ </Text>
-          <Text>Low:{this.props.todayLow}℉ </Text>
+          <Text style={styles.level}>
+            {moment(this.props.day).format('MMM Do')}
+          </Text>
+          <Text style={styles.level}>{this.getIcon()}</Text>
+          <Text style={styles.level}>High:{this.props.todayHigh} ℉ </Text>
+          <Text style={styles.level}>Low:{this.props.todayLow}℉ </Text>
         </View>
       </View>
     );
@@ -74,13 +76,9 @@ export default Day;
 
 const styles = StyleSheet.create({
   icons: {
-    width: '75%',
-    borderWidth: .5,
-    borderStyle: 'solid',
-    borderColor: 'black',
-    borderRadius: 10,
+    width: '100%',
   },
-  fontsize: {
+  level: {
     fontSize: 18,
   },
 });
