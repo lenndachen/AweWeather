@@ -187,44 +187,52 @@ export class Home extends Component {
     console.log('hello', nami);
     return (
       <ScrollView>
-        <LinearGradient start={{ x: 0, y: 0 }} colors={['rgba(75,208,173,1)', 'rgba(31,155,203,0.449438202247191)', 'rgba(210,230,47,1)']} style={styles.linearGradient}>
-        <View style={styles.background}>
-          <View>
-            <Button style={styles.buttonback}
-              onPress={() => this.props.navigation.navigate('SettingScreen')}
-              title="Back to Zipcode Entry"
-            />
-          </View>
-          <View style={styles.parentcontainer}>
-            <View style={styles.section1}>
-              <View style={styles.icon}>
-                <Today dayInfo={dayInfo} />
+        <LinearGradient
+          start={{x: 0, y: 0}}
+          colors={[
+            'rgba(75,208,173,1)',
+            'rgba(31,155,203,0.449438202247191)',
+            'rgba(210,230,47,1)',
+          ]}
+          style={styles.linearGradient}>
+          <View style={styles.background}>
+            <View>
+              <Button
+                style={styles.buttonback}
+                onPress={() => this.props.navigation.navigate('SettingScreen')}
+                title="Back to Zipcode Entry"
+              />
+            </View>
+            <View style={styles.parentcontainer}>
+              <View style={styles.section1}>
+                <View style={styles.icon}>
+                  <Today dayInfo={dayInfo} />
+                </View>
+                <View style={styles.flexyglass} />
+                <View>
+                  <Text style={styles.elephant}>
+                    {this.state.temperature && (
+                      <Text>{this.getTemp(temperature)}</Text>
+                    )}
+                    <Text style={styles.hot}>℉</Text>
+                  </Text>
+                  <Text style={styles.big}>Description: {dayInfo}</Text>
+                  <Text style={styles.big}>City: {city}</Text>
+                  <Text style={styles.big}>Country: {country}</Text>
+                </View>
               </View>
-              <View style={styles.flexyglass} />
-              <View>
-                <Text style={styles.elephant}>
-                  {this.state.temperature && (
-                    <Text>{this.getTemp(temperature)}</Text>
-                  )}
-                  <Text style={styles.hot}>℉</Text>
-                </Text>
-                <Text style={styles.big}>Description: {dayInfo}</Text>
-                <Text style={styles.big}>City: {city}</Text>
-                <Text style={styles.big}>Country: {country}</Text>
+              <View style={styles.candid}>
+                {this.state.isForecast && (
+                  <Week
+                    today={this.state.today}
+                    day2={this.state.day2}
+                    day3={this.state.day3}
+                    day4={this.state.day4}
+                    day5={this.state.day5}
+                  />
+                )}
               </View>
             </View>
-            <View style={styles.candid}>
-              {this.state.isForecast && (
-                <Week
-                  today={this.state.today}
-                  day2={this.state.day2}
-                  day3={this.state.day3}
-                  day4={this.state.day4}
-                  day5={this.state.day5}
-                />
-              )}
-            </View>
-          </View>
           </View>
         </LinearGradient>
       </ScrollView>
@@ -273,5 +281,5 @@ const styles = StyleSheet.create({
   },
   buttonback: {
     justifyContent: 'flex-start',
-  }
+  },
 });

@@ -7,7 +7,7 @@ import Home from '../screens/Home';
 
 const AppNavigator = createStackNavigator({
   SettingScreen: {screen: Setting},
-  HomeScreen: { screen: Home },
+  HomeScreen: {screen: Home},
 });
 
 const AppCo = createAppContainer(AppNavigator);

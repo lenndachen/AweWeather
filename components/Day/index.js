@@ -1,7 +1,7 @@
 import React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import moment from 'moment';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
+import moment from 'moment';
 import {
   faCloud,
   faSun,
@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {Text, View, StyleSheet} from 'react-native';
 
-library.add(faSun, faCloud, faCloudRain);
+library.add(faSun, faCloud, faCloudRain, faSnowflake);
 
 class Day extends React.Component {
   getIcon() {
