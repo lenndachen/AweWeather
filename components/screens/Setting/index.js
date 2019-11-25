@@ -1,7 +1,16 @@
 import React, {Component} from 'react';
-import {View, Button, TextInput, StyleSheet, Text} from 'react-native';
+import {View, TextInput, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import moment from 'moment';
-import {navigation} from 'react-navigation';
+import {
+  faCloud,
+  faSun,
+  faCloudRain,
+  faSnowflake,
+} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {library} from '@fortawesome/fontawesome-svg-core';
+
+library.add(faSun, faCloud, faCloudRain, faSnowflake);
 export class Setting extends Component {
   constructor(props) {
     super(props);
@@ -9,6 +18,12 @@ export class Setting extends Component {
       currentInput: '',
     };
   }
+
+  getIcons() {
+    const hello = <FontAwesomeIcon icon={faSun} size={60} />;
+    return hello;
+  }
+
   get5day = async () => {
     const apikey = '1d80f33d31919cc397f2bf782026d6c3';
     let zip = this.state.setUserInput;
@@ -139,23 +154,54 @@ export class Setting extends Component {
     });
   }
 
-
   render() {
     return (
-      <View>
-        <TextInput
-          style={styles.input}
-          onChangeText={text => this.setState({setUserInput: text})}
-          value={this.state.setUserInput}
-        />
-        <Button
-          title="Home"
-          onPress={() => {
-            this.props.navigation.navigate('HomeScreen', {
-              user: this.state.setUserInput,
-            });
-          }}
-        />
+      <View style={styles.home}>
+        <View>
+          <Text style={styles.sun}>
+            <FontAwesomeIcon style={styles.icon1} icon={faSun} size={200} />
+          </Text>
+        </View>
+        <View>
+          <Text style={styles.center}>
+            Where in the world do you want weather for today? Please Enter the
+            zipcode.
+          </Text>
+        </View>
+        <View>
+          <TextInput
+            style={styles.input}
+            placeholder="ZIPCODE"
+            onChangeText={text => this.setState({setUserInput: text})}
+            value={this.state.setUserInput}
+          />
+          <View>
+          <TouchableOpacity
+            style={styles.submitbutton}
+            title="Submit"
+            onPress={() => {
+              this.props.navigation.navigate('HomeScreen', {
+                user: this.state.setUserInput,
+              });
+            }}
+            ><Text style={styles.textytaxi}>Submit</Text>
+          </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.konk}>
+          <Text>
+            <FontAwesomeIcon icon={faSnowflake} size={70} />
+          </Text>
+          <Text>
+            <FontAwesomeIcon icon={faCloud} size={70} />
+          </Text>
+          <Text>
+            <FontAwesomeIcon icon={faCloudRain} size={70} />
+          </Text>
+          <Text>
+            <FontAwesomeIcon icon={faSun} size={70} />
+          </Text>
+        </View>
       </View>
     );
   }
@@ -164,5 +210,46 @@ export class Setting extends Component {
 export default Setting;
 
 const styles = StyleSheet.create({
-  input: {height: 40, borderColor: 'gray', borderWidth: 1},
+  input: {
+    height: 80,
+    position: 'relative',
+    width: 180,
+    textAlign: 'center',
+    alignContent: 'center',
+    justifyContent: 'center',
+    fontSize: 40,
+  },
+  home: {
+    height: 700,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#A3F5FF',
+  },
+  submitbutton: {
+    borderRadius: 10,
+    width: 205,
+    height: 50,
+    backgroundColor: 'black',
+    textAlign: 'center',
+  },
+  center: {
+    textAlign: 'center',
+    fontSize: 28,
+  },
+  icon1: {},
+  konk: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingTop: 20,
+  },
+  sun: {
+    paddingTop: 30, 
+  },
+  textytaxi: {
+    fontSize: 28,
+    textAlign: 'center',
+    paddingTop: 5,
+    color: 'white',
+  },
 });

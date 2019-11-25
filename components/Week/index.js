@@ -1,6 +1,6 @@
 import React from 'react';
 import Day from '../Day';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 class Week extends React.Component {
   constructor(props) {
@@ -79,26 +79,30 @@ class Week extends React.Component {
     return (
       <View>
         {this.state.day1info && (
-          <View>
+          <View style={styles.renders}>
             <Day
+              style={styles.day1}
               day={this.state.day2}
               todayHigh={this.state.day2High}
               todayLow={this.state.day2Low}
               dayInfo={this.state.day2info}
             />
             <Day
+              style={styles.day1}
               day={this.state.day3}
               todayHigh={this.state.day3High}
               todayLow={this.state.day3Low}
               dayInfo={this.state.day3info}
             />
             <Day
+              style={styles.day1}
               day={this.state.day4}
               todayHigh={this.state.day4High}
               todayLow={this.state.day4Low}
               dayInfo={this.state.day4info}
             />
             <Day
+              style={styles.day1}
               day={this.state.day5}
               todayHigh={this.state.day5High}
               todayLow={this.state.day5Low}
@@ -112,3 +116,15 @@ class Week extends React.Component {
 }
 
 export default Week;
+
+const styles = StyleSheet.create({
+  renders: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 50,
+  },
+  day1: {
+    width: '25%',
+    padding: -40,
+  },
+});

@@ -11,6 +11,7 @@ import Today from '../../Today';
 import Week from '../../Week';
 import moment from 'moment';
 import Setting from '../Setting';
+import LinearGradient from 'react-native-linear-gradient';
 export class Home extends Component {
   constructor(props) {
     super(props);
@@ -38,11 +39,11 @@ export class Home extends Component {
 
   componentDidMount() {
     const nami = this.props.navigation.getParam('user');
-    this.get5day(nami)
-    this.getWeather(nami)
+    this.get5day(nami);
+    this.getWeather(nami);
   }
 
-  getWeather = async (zip) => {
+  getWeather = async zip => {
     const apikey = '1d80f33d31919cc397f2bf782026d6c3';
     //let zip = this.state.setUserInput;
     const url =
@@ -74,7 +75,7 @@ export class Home extends Component {
       });
   };
 
-  get5day = async (zip) => {
+  get5day = async zip => {
     const apikey = '1d80f33d31919cc397f2bf782026d6c3';
     //let zip = this.state.setUserInput;
     const url =
@@ -186,43 +187,54 @@ export class Home extends Component {
     console.log('hello', nami);
     return (
       <ScrollView>
-        <View>
-          <View>
-            <Button
-              onPress={() => this.props.navigation.navigate('SettingScreen')}
-              title="Setting"
-            />
-          </View>
-          <View>
-            <View style={styles.section1}>
-              <View style={styles.flexyglass}>
-                <Text style={styles.big}>
-                  Temperature:
-                  {this.state.temperature && (
-                    <Text>{this.getTemp(temperature)} ℉</Text>
-                  )}
-                </Text>
-                <Today dayInfo={dayInfo} />
-              </View>
-              <View>
-                <Text style={styles.big}>Description: {dayInfo}</Text>
-                <Text style={styles.big}>City: {city}</Text>
-                <Text style={styles.big}>Country: {country}</Text>
-              </View>
-            </View>
+        <LinearGradient
+          start={{x: 0, y: 0}}
+          colors={[
+            'rgba(75,208,173,1)',
+            'rgba(31,155,203,0.449438202247191)',
+            'rgba(210,230,47,1)',
+          ]}
+          style={styles.linearGradient}>
+          <View style={styles.background}>
             <View>
-              {this.state.isForecast && (
-                <Week
-                  today={this.state.today}
-                  day2={this.state.day2}
-                  day3={this.state.day3}
-                  day4={this.state.day4}
-                  day5={this.state.day5}
-                />
-              )}
+              <Button
+                style={styles.buttonback}
+                onPress={() => this.props.navigation.navigate('SettingScreen')}
+                title="Back to Zipcode Entry"
+              />
+            </View>
+            <View style={styles.parentcontainer}>
+              <View style={styles.section1}>
+                <View style={styles.icon}>
+                  <Today dayInfo={dayInfo} />
+                </View>
+                <View style={styles.flexyglass} />
+                <View>
+                  <Text style={styles.elephant}>
+                    {this.state.temperature && (
+                      <Text>{this.getTemp(temperature)}</Text>
+                    )}
+                    <Text style={styles.hot}>℉</Text>
+                  </Text>
+                  <Text style={styles.big}>Description: {dayInfo}</Text>
+                  <Text style={styles.big}>City: {city}</Text>
+                  <Text style={styles.big}>Country: {country}</Text>
+                </View>
+              </View>
+              <View style={styles.candid}>
+                {this.state.isForecast && (
+                  <Week
+                    today={this.state.today}
+                    day2={this.state.day2}
+                    day3={this.state.day3}
+                    day4={this.state.day4}
+                    day5={this.state.day5}
+                  />
+                )}
+              </View>
             </View>
           </View>
-        </View>
+        </LinearGradient>
       </ScrollView>
     );
   }
@@ -231,23 +243,43 @@ export class Home extends Component {
 export default Home;
 
 const styles = StyleSheet.create({
-  input: {
-    padding: 10,
-  },
   section1: {
-    color: 'blue',
-    borderStyle: 'solid',
-    borderColor: 'black',
-    borderWidth: 1,
+    height: 450,
   },
   flexyglass: {
     flexDirection: 'row',
     justifyContent: 'center',
     textAlign: 'center',
+    flex: 1,
   },
   big: {
     fontSize: 25,
     justifyContent: 'center',
     textAlign: 'center',
+  },
+  parentcontainer: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  candid: {
+    width: 400,
+  },
+  elephant: {
+    justifyContent: 'center',
+    fontSize: 100,
+    textAlign: 'center',
+  },
+  hot: {
+    fontSize: 40,
+  },
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5,
+    height: 750,
+  },
+  buttonback: {
+    justifyContent: 'flex-start',
   },
 });
